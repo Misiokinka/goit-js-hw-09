@@ -82,6 +82,6 @@ list.innerHTML = newListImage;
 
 let lightbox = new SimpleLightbox('.gallery a', {
   captionsData: 'alt',
-  captionsData: 'bottom',
-  captionsData: 250,
+  captionPosition: 'bottom',
+  captionDelay: 250,
 });

@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', () => {
   const feedbackForm = document.querySelector('.feedback-form');
 
@@ -16,18 +15,23 @@ function handleInput(event) {
   const { name, value } = event.target;
 
   const currentFormData = {
-    email: document.querySelector('[name="email"]').value,
-    message: document.querySelector('[name="message"]').value,
+    email: document.querySelector('[name="email"]').value.trim(),
+    message: document.querySelector('[name="message"]').value.trim(),
   };
   localStorage.setItem('feedback-form-state', JSON.stringify(currentFormData));
 }
 
 function handleSubmit(event) {
   event.preventDefault();
+  const email = document.querySelector('[name="email"]').value.trim();
+  const message = document.querySelector('[name="message"]').value.trim();
+  if (!email || !message) {
+    alert('Не всі поля заповнені');
+  }
 
   const formData = {
-    email: document.querySelector('[name="email"]').value,
-    message: document.querySelector('[name="message"]').value,
+    email,
+    message,
   };
 
   localStorage.removeItem('feedback-form-state');
